@@ -37,7 +37,11 @@ Vagrant.configure("2") do |config|
 	    config.vm.define node_name do |nodecfg|
 	        nodecfg.vm.box = node[:box]
 		nodecfg.vm.hostname = node_name
-		nodecfg.vm.synced_folder ".", "/vagrant", disabled: true
+
+		# Only the server needs a synced folder
+		unless node_name.start_with?("srv01")
+		    nodecfg.vm.synced_folder ".", "/vagrant", disabled: true
+		end
 
                 # Some of the servers will have more than one network interface defined
                 node[:networks].each do |nodeint|
