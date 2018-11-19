@@ -1,0 +1,14 @@
+[mons]
+mon01
+mon02
+mon03
+
+[osds]
+osd01
+osd02
+osd03
+osd04
+osd05
+
+[all:vars]
+ansible_python_interpreter=/usr/bin/python3
